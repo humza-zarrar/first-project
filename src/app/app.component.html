@@ -1,3 +1,20 @@
+<app-header></app-header>
+
+<a routerLink="Admin" > Admin</a>
+<br>
+<a routerLink="about" >About Us</a>
+<br>
+<a routerLink="Public" > Public</a>
+<br>
+<a routerLink="contact" >Contact Us</a>
+<router-outlet></router-outlet>
+
+<div *ngFor="let data of child" >
+  <app-child [hero]="data"></app-child>
+</div>
+
+<h3 appCustomStyle> hello world</h3>
+
 <h1>This is the first project</h1>
 <app-login></app-login>
 <app-signup></app-signup>
@@ -37,6 +54,7 @@
 <ng-template #elseBlock>
     <h1>Else Block</h1>
 </ng-template> -->
+
 <h1>If Else Function</h1>
 <ng-template [ngIf]="show=='red'">
 	<h4> Red Block</h4>
@@ -51,16 +69,16 @@
 <br><br>
 <h1>Angular Switch</h1>
 <div [ngSwitch]="color">
-	<h4 style="color: red;" *ngSwitchCase="'red'">
+	<h4 style="color: rgb(129, 1, 1);" *ngSwitchCase="'red'">
 		Red Color
 	</h4>
-	<h4 style="color: green;" *ngSwitchCase="'green'">
+	<h4 style="color: rgb(0, 61, 0);" *ngSwitchCase="'green'">
 		Green Color
 	</h4>
-	<h4 style="color: blue;" *ngSwitchCase="'blue'">
+	<h4 style="color: rgb(0, 153, 255);" *ngSwitchCase="'blue'">
 		Blue Color
 	</h4>
-	<h4 style="color: yellow;" *ngSwitchCase="'yellow'">
+	<h4 style="color: rgb(255, 255, 16);" *ngSwitchCase="'yellow'">
 		Yellow Color
 	</h4>
 </div>
@@ -98,3 +116,53 @@
 </form>
 
 <br><br>
+
+<h2 [style.color]="color">Dynamic color</h2>
+
+<button (click)="updateColor()">Update Color</button>
+<br><br>
+
+<h1>Bootstrap Alert</h1>
+
+<div *ngFor="let alert of alerts">
+  <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+</div>
+<div>
+  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+</div>
+<br><br>
+
+<h1>bootstrap buttons</h1>
+
+<div class="btn-group btn-group-toggle">
+	<label class="btn-primary" ngbButtonLabel>
+	  <input type="checkbox" ngbButton [(ngModel)]="model.left"> Left (pre-checked)
+	</label>
+	<label class="btn-primary" ngbButtonLabel>
+	  <input type="checkbox" ngbButton [(ngModel)]="model.middle"> Middle
+	</label>
+	<label class="btn-primary" ngbButtonLabel>
+	  <input type="checkbox" ngbButton [(ngModel)]="model.right"> Right
+	</label>
+</div>
+
+<br><br>
+
+<button mat-button color="primary">Primary</button>
+<button mat-raised-button color="accent">Accent</button>
+
+<mat-slider
+  tickInterval="1000"
+  min="1"
+  max="100000">
+</mat-slider>
+
+<br><br>
+<H2>How to use pipes in angular</H2>
+<p>{{fullname | titlecase }}</p>
+<p>{{today | date:'full' }}</p>
+<p>{{str | slice:2 }}</p>
+<p>{{val | currency:'USD' }}</p>
+<br><br>
+
+<app-footer></app-footer>
